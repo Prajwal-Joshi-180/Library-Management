@@ -18,5 +18,6 @@
             </tr>
             </table>
 </form>
+<?php if(isset($_GET['flag3'])){ ?> <div class="flag3"> Email Not Registered</div><?php } ?>
 </body>
 </html>

@@ -7,14 +7,21 @@
 		{
             $email=$_POST['email'];
             $password=$_POST['password'];
-            $sql=$this->conn->prepare("UPDATE users set password='$password' where email='$email'"); 
-			if($sql->execute()) {
-                header("Location: signin.php");
+			if($_SESSION['email']==$email){
+				$sql=$this->conn->prepare("UPDATE users set password='$password' where email='$email'"); 
+				if($sql->execute()) {
+					header("Location: signin.php");
+				}
+				else{
+					header("Location: signup.php");
+				}
 			}
 			else{
-                header("Location: signup.php");
+				$flag3=1;
+				header("Location: passwordchange.php?flag3=".$flag3);
+				exit(0);
 			}
-		}
+	}
 	}
 	 $pass=new passwordredirect();
 	 $pass->password();
